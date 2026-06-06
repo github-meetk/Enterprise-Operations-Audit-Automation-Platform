@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "projects": {
+    "enterprise-operations-ui": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "browser": "src/main.ts",
+            "index": "src/index.html",
+            "outputPath": "dist/enterprise-operations-ui",
+            "tsConfig": "tsconfig.app.json",
+            "styles": ["src/styles.scss"]
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": { "buildTarget": "enterprise-operations-ui:build:production" },
+            "development": { "buildTarget": "enterprise-operations-ui:build" }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}
