@@ -26,7 +26,43 @@ architecture and database design before application scaffolding begins.
 
 ## Current Status
 
-Phase 1: architecture planning and relational data design.
+Implemented through Phase 7:
 
-Application code will be scaffolded in Phase 2 after the architecture baseline
-is accepted.
+- FastAPI backend foundation, logging, errors, settings, and health endpoint
+- PostgreSQL schema models, Alembic baseline, and deterministic seed script
+- JWT login, rotating refresh tokens, sessions, RBAC permission checks
+- Audit lifecycle APIs
+- Workflow task inbox and approval actions
+- Employee leave and expense request APIs
+- Analytics dashboard API
+- Angular 19 enterprise shell, login, audit portfolio, approval inbox,
+  operations portal, and dashboard views
+- Docker Compose configuration for PostgreSQL, Redis, API, worker, and frontend
+
+## Local Commands
+
+```bash
+python3 -m venv backend/.venv
+backend/.venv/bin/pip install -e "backend[dev]"
+npm install --prefix frontend
+
+make backend-lint
+make backend-test
+make frontend-check
+make compose-check
+```
+
+When Docker Desktop is running:
+
+```bash
+docker compose up -d postgres redis
+make migrate
+make seed
+```
+
+Demo admin credentials seeded for local development:
+
+```text
+admin@example.com
+ChangeMe123!
+```
